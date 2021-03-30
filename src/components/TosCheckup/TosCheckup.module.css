@@ -1,11 +1,7 @@
-.TosIcon {
+.row {
     display: flex;
-    flex-direction: column;
 }
 
-.normal {
-}
-
-.shaded {
-    filter: brightness(0.5);
+.column {
+    flex: 50%;
 }

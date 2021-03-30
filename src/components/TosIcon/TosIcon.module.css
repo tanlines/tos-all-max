@@ -1,11 +1,43 @@
 .TosIcon {
-    display: flex;
-    flex-direction: column;
+    float: left;
+    width: 50px;
+    height: 70px;
+    margin: 5px;
+    text-align: center;
 }
 
 .normal {
+    width:50px; /* you can use % */
+    height: auto;
 }
 
 .shaded {
+    width:50px; /* you can use % */
+    height: auto;
     filter: brightness(0.5);
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    background-color: #E8DDA3;
+    color: #fff;
+    text-align: center;
+
+    top: 100%;
+    left: 50%;
+    right: 50%;
+    margin-left: -100px;
+    margin-right: -100px;
+
+    position: absolute;
+    z-index : 1;
+}
+
+.popup:hover .popuptext {
+    visibility: visible;
 }
