@@ -21,10 +21,9 @@ class TosCheckup extends React.Component<CheckupProps,CheckupState> {
             playerId: 1,
             token: "",
             cards: []
-        }
+        };
         this.updateOwnedCards = this.updateOwnedCards.bind(this);
         this.updatePlayerId = this.updatePlayerId.bind(this);
-
     }
 
     componentDidMount() {

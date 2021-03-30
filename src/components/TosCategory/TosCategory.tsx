@@ -31,10 +31,20 @@ class TosCategory extends React.Component<TosCategoryProps, TosCategoryState> {
         this.setState({numOwnedInCategory: this.state.numOwnedInCategory + (shaded ? -1 : +1)});
     }
 
+    startCounting() {
+        this.finishedCounting = false;
+        this.tempNum = 0;
+    }
+
+
     finishCounting() {
         if (this.tempNum > 0) {
             this.finishedCounting = true;
         }
+    }
+
+    componentWillReceiveProps(props: TosCategoryProps) {
+        this.setState({numOwnedInCategory: 0});
     }
 
     render() {
@@ -43,6 +53,9 @@ class TosCategory extends React.Component<TosCategoryProps, TosCategoryState> {
                 <div className={styles.TosCategory}>
                 <h4>{this.props.race} owned {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length}</h4>
 
+                {
+                    this.startCounting()
+                }
                 {
                     this.props.ids.sort((a, b) => a - b).map((number) => {
                             let preshad: boolean;
