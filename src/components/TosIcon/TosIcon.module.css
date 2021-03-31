@@ -1,17 +1,36 @@
 .TosIcon {
-    float: left;
     width: 50px;
-    height: 70px;
-    margin: 5px;
-    text-align: center;
+    margin: 2px;
+    vertical-align: text-bottom;
 }
 
+.background {
+    position: absolute;
+    z-index: -1;
+    background-color: black;
+    width: 50px;
+    height: 20px;
+}
+
+.monsterId a {
+    color: white;
+    vertical-align: text-top;
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-small;
+}
 .normal {
+    outline: 3px black solid;
+    outline-offset: -3px;
+    vertical-align: text-bottom;
     width:50px; /* you can use % */
     height: auto;
 }
 
 .shaded {
+    outline: 3px black solid;
+    outline-offset: -3px;
+    vertical-align: text-bottom;
     width:50px; /* you can use % */
     height: auto;
     filter: brightness(0.5);

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TosCategory.module.css';
 import TosIcon from "../TosIcon/TosIcon";
-import {hasAnyEvo} from "../../App";
+import { hasAnyEvo } from '../utils/Utils';
 
 type TosCategoryProps = {
     element: string,
@@ -43,16 +43,17 @@ class TosCategory extends React.Component<TosCategoryProps, TosCategoryState> {
         }
     }
 
-    componentWillReceiveProps(props: TosCategoryProps) {
-        this.setState({numOwnedInCategory: 0});
+    componentDidUpdate(prevProps: TosCategoryProps, prevState:TosCategoryState) {
+        if (this.props.ownedCards.length !== prevProps.ownedCards.length) {
+            this.setState({numOwnedInCategory: 0});
+        }
     }
 
     render() {
         return (
             <>
                 <div className={styles.TosCategory}>
-                <h4>{this.props.race} owned {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length}</h4>
-
+                <h4>{this.props.race} owned {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length} {this.props.ids.length - (this.tempNum + this.state.numOwnedInCategory) <= 5 ? "✔️" : ""}</h4>
                 {
                     this.startCounting()
                 }

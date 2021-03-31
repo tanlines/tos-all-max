@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TosIcon.module.css';
 import TosIconPopup from "../TosIconPopup/TosIconPopup";
-import {getEvolutionIds, hasAnyEvo } from '../../App';
+import {getEvolutionIds, getWikiImage, hasAnyEvo} from "../utils/Utils";
 
 type TosIconProps = {
     id: number,
@@ -12,7 +12,9 @@ type TosIconProps = {
 }
 type TosIconState = {
     shaded: boolean,
-    hasAnyEvo: boolean
+    hasAnyEvo: boolean,
+    errored: boolean,
+    src: string
 }
 
 class TosIcon extends React.Component<TosIconProps,TosIconState> {
@@ -20,10 +22,28 @@ class TosIcon extends React.Component<TosIconProps,TosIconState> {
         super(props, context);
         this.state = {
             shaded: this.props.ownedCards.includes(this.props.id),
-            hasAnyEvo: false
+            hasAnyEvo: false,
+            errored: false,
+            src: getWikiImage(this.props.id)
         };
 
         this.toggleShade = this.toggleShade.bind(this);
+    }
+
+
+    onError = () => {
+        if (!this.state.errored) {
+            this.setState({
+                src: "https://web-assets.tosconfig.com/gallery/icons/1883.jpg",
+                errored: true,
+            });
+        }
+    };
+
+    componentDidUpdate(prevProps: TosIconProps, prevState:TosIconState) {
+        if (this.props.ownedCards.length !== prevProps.ownedCards.length) {
+            this.setState({shaded: false});
+        }
     }
 
     toggleShade() {
@@ -41,8 +61,14 @@ class TosIcon extends React.Component<TosIconProps,TosIconState> {
         return (
             <div className={styles.popup}>
                 <div className={styles.TosIcon}>
-                    <img className={this.isShaded() ? styles.shaded : styles.normal} onClick={this.toggleShade} src={"https://tanlines.github.io/tos_tool_data/img/monster/" + this.props.id + ".png"} alt=""/>
-                    <a href={"https://tos.fandom.com/en/wiki/" + this.props.id}>{this.props.id}</a>
+                    <img className={this.isShaded() ? styles.shaded : styles.normal} onClick={this.toggleShade} src={this.state.src} alt="" onError={this.onError}/>
+                    <div className={styles.background}>
+
+                    </div>
+                    <div className={styles.monsterId}>
+                    <a target="_blank" href={"https://tos.fandom.com/en/wiki/" + this.props.id}>{this.props.id}</a>
+                    <a target="_blank" href={"https://tos.fandom.com/zh/wiki/" + this.props.id}> zh</a>
+                    </div>
                 </div>
                 <span className={styles.popuptext}>
                 {

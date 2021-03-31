@@ -36,7 +36,7 @@ class TosCheckup extends React.Component<CheckupProps,CheckupState> {
             .then(json => {
                 this.setState({ token: json.token });
                 if (this.state.token) {
-                    this.setState({errorString: "Token found, ready to search user cards"});
+                    this.setState({errorString: "Ready to search user cards"});
                 } else {
                     this.setState({errorString: json.errorMessage});
                 }
@@ -82,14 +82,26 @@ class TosCheckup extends React.Component<CheckupProps,CheckupState> {
     render() {
         return (
             <div>
-                <label htmlFor="quantity">Player Id</label>
+                <h5>
+                    Instructions
+                    <br/>
+                    1. Login to <a href={"https://checkup.tosgame.com/"}>https://checkup.tosgame.com/</a>.
+                    <br/>
+                    2. Tick the 公開背包 (公開後方可接受健檢) box to set profile to public.
+                    <br/>
+                    3. Click the 發送 button to update your profile.
+                    <br/>
+                    4. Enter player ID below and click "Update owned cards"
+                </h5>
+                <h4>
+                    {this.state.errorString}
+                </h4>
+                <label htmlFor="quantity">Player Id (e.g. 29490729) </label>
                 <input type="number" name="quantity" id='player-id-input' onChange={this.updatePlayerId} min="1" max="99999999999"/>
                 <button id="search" onClick={this.updateOwnedCards}>
                     Update owned cards
                 </button>
-                <h4>
-                    {this.state.errorString}
-                </h4>
+                <hr/>
                 <div className={styles.row}>
                     <div className={styles.column}>
                     <TosCategory element={"Water"} race={"Human"} ids={[597,1041,1046,2259,2381,2268,2017,1482,1472,1447,1336,2273,1701,2274,2041]} ownedCards={this.state.cards}/>
