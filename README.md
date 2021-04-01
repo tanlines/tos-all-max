@@ -1,5 +1,7 @@
 # Tower of Saviors All Max Helper
 
+[https://tanlines.github.io/tos-all-max/](https://tanlines.github.io/tos-all-max/)
+
 [Bahamut ACG Choose your own All Max](https://www.facebook.com/tos.zh/posts/4050516368372185)
 
 When choosing a reward, you get 5 choices from a specific category. The choices prioritise cards you currently don't own.
