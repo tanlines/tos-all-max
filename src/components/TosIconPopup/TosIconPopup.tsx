@@ -30,7 +30,7 @@ class TosIconPopup extends React.Component<TosIconProps,TosIconState> {
             <div>
                 {
                     this.props.ids.sort((a, b) => a - b).map((number) =>
-                        <TosIcon callback={null} preshade={this.props.ownedCards.includes(number)} popup={false} id={number} ownedCards={this.props.ownedCards}/>
+                        <TosIcon callback={null} preshade={this.props.ownedCards.includes(number)} popup={false} id={number} ownedCards={this.props.ownedCards} condensed={false}/>
                     )
                 }
             </div>

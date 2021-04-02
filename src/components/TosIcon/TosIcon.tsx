@@ -8,7 +8,8 @@ type TosIconProps = {
     ownedCards: Array<number>
     popup: boolean
     preshade: boolean
-    callback: any
+    callback: any,
+    condensed: boolean
 }
 type TosIconState = {
     shaded: boolean,
@@ -58,6 +59,9 @@ class TosIcon extends React.Component<TosIconProps,TosIconState> {
     }
 
     render() {
+        if (this.props.condensed && this.isShaded()) {
+            return "";
+        }
         return (
             <div className={styles.popup}>
                 <div className={styles.TosIcon}>

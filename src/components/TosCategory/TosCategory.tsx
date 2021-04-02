@@ -7,7 +7,8 @@ type TosCategoryProps = {
     element: string,
     race: string,
     ids: Array<number>,
-    ownedCards: Array<number>
+    ownedCards: Array<number>,
+    condensed: boolean
 }
 
 type TosCategoryState = {
@@ -50,27 +51,28 @@ class TosCategory extends React.Component<TosCategoryProps, TosCategoryState> {
     }
 
     render() {
+        this.startCounting();
+        this.props.ids.sort((a, b) => a - b).map((number) => {
+                if (!this.finishedCounting && hasAnyEvo(number, this.props.ownedCards)) {
+                    this.tempNum++;
+                }
+            }
+        );
+        this.finishCounting();
+        const remainingCards: number = this.props.ids.length - (this.tempNum + this.state.numOwnedInCategory);
+        if (this.props.condensed && (remainingCards > 5 || remainingCards <= 0 )) {
+            return "";
+        }
         return (
             <>
                 <div className={styles.TosCategory}>
-                <h4>{this.props.race} owned {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length} {this.props.ids.length - (this.tempNum + this.state.numOwnedInCategory) <= 5 ? "✔️" : ""}</h4>
-                {
-                    this.startCounting()
-                }
+                <h4>{this.props.race} owned {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length} {remainingCards <= 5 ? "✔️" : ""}</h4>
                 {
                     this.props.ids.sort((a, b) => a - b).map((number) => {
-                            let preshad: boolean;
-                            preshad = hasAnyEvo(number, this.props.ownedCards);
-                            if (!this.finishedCounting && preshad) {
-                                this.tempNum++;
-                            }
-                            return <TosIcon callback={this.iconCallback} preshade={preshad}
-                                     ownedCards={this.props.ownedCards} popup={true} id={number}/>
+                            return <TosIcon callback={this.iconCallback} preshade={hasAnyEvo(number, this.props.ownedCards)}
+                                     ownedCards={this.props.ownedCards} popup={true} id={number} condensed={this.props.condensed}/>
                         }
                     )
-                }
-                {
-                    this.finishCounting()
                 }
                 </div>
             </>
