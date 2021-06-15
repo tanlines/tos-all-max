@@ -1,6 +1,6 @@
 # Tower of Saviors All Max Helper
 
-**[Featured on the official game Youtube channel](https://www.youtube.com/watch?v=9D2jtT9jVUg)**
+**[Featured on the game's official Youtube channel](https://www.youtube.com/watch?v=9D2jtT9jVUg)**
 
 [https://tanlines.github.io/tos-all-max/](https://tanlines.github.io/tos-all-max/)
 
