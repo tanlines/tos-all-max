@@ -14,4 +14,4 @@ In the project directory, you can run:
 
 ### `npm run deploy`
 
-### `yarn start`
+### `npm start`

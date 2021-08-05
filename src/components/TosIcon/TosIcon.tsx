@@ -7,7 +7,7 @@ type TosIconProps = {
     id: number,
     ownedCards: Array<number>
     popup: boolean
-    preshade: boolean
+    forceNoShade: boolean
     callback: any,
     condensed: boolean
 }
@@ -48,14 +48,17 @@ class TosIcon extends React.Component<TosIconProps,TosIconState> {
     }
 
     toggleShade() {
-        if (!this.props.preshade && this.props.popup && !hasAnyEvo(this.props.id,this.props.ownedCards)) {
+        if (!this.props.forceNoShade && this.props.popup && !hasAnyEvo(this.props.id,this.props.ownedCards)) {
             this.setState({shaded: !this.state.shaded});
             this.props.callback(this.state.shaded);
         }
     }
 
     isShaded() {
-        return this.props.preshade || this.state.shaded || (this.props.popup && hasAnyEvo(this.props.id,this.props.ownedCards));
+        if (this.props.forceNoShade) return false;
+        return this.state.shaded || (this.props.ownedCards.includes(this.props.id)) ||
+            (this.props.popup && hasAnyEvo(this.props.id, this.props.ownedCards))
+            ;
     }
 
     render() {

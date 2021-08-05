@@ -66,10 +66,10 @@ class TosCategory extends React.Component<TosCategoryProps, TosCategoryState> {
         return (
             <>
                 <div className={styles.TosCategory}>
-                <h4>{this.props.race} owned {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length} {remainingCards <= 5 ? "✔️" : ""}</h4>
+                <h4>{this.props.race} {this.tempNum + this.state.numOwnedInCategory}/{this.props.ids.length} {remainingCards <= 5 ? "✔️" : ""}</h4>
                 {
                     this.props.ids.sort((a, b) => a - b).map((number) => {
-                            return <TosIcon callback={this.iconCallback} preshade={hasAnyEvo(number, this.props.ownedCards)}
+                            return <TosIcon callback={this.iconCallback} forceNoShade={false}
                                      ownedCards={this.props.ownedCards} popup={true} id={number} condensed={this.props.condensed}/>
                         }
                     )
