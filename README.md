@@ -10,6 +10,10 @@ When choosing a reward, you get 5 choices from a specific category. The choices 
 
 This tool will autofill cards you don't own for each category to display your options. With less than 5 remaining options, you can guarantee choosing any missing card from that category.
 
+## Dupe count checker
+
+Counts how many of each card you have, factoring different evolution levels of the same type
+
 ## Available Scripts
 
 In the project directory, you can run:
