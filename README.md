@@ -1,5 +1,7 @@
 # Tower of Saviors All Max Helper
 
+**[Featured on the game's official Youtube channel](https://www.youtube.com/watch?v=9D2jtT9jVUg)**
+
 [https://tanlines.github.io/tos-all-max/](https://tanlines.github.io/tos-all-max/)
 
 [Bahamut ACG Choose your own All Max](https://www.facebook.com/tos.zh/posts/4050516368372185)
