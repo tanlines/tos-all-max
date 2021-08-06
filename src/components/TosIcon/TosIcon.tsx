@@ -44,6 +44,7 @@ class TosIcon extends React.Component<TosIconProps,TosIconState> {
     componentDidUpdate(prevProps: TosIconProps, prevState:TosIconState) {
         if (this.props.ownedCards.length !== prevProps.ownedCards.length) {
             this.setState({shaded: false});
+            this.setState({src: getWikiImage(this.props.id)});
         }
     }
 

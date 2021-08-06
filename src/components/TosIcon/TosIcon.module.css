@@ -46,6 +46,7 @@
     background-color: #E8DDA3;
     color: #fff;
     text-align: center;
+    white-space: pre-wrap;
 
     top: 100%;
     left: 50%;
@@ -54,7 +55,7 @@
     margin-right: -100px;
 
     position: absolute;
-    z-index : 1;
+    z-index : 5;
 }
 
 .popup:hover .popuptext {

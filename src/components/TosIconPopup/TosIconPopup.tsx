@@ -16,7 +16,7 @@ class TosIconPopup extends React.Component<TosIconProps,TosIconState> {
         super(props, context);
         this.state = {
             shaded: false
-        }
+        };
 
         this.toggleShade = this.toggleShade.bind(this);
     }
@@ -27,12 +27,12 @@ class TosIconPopup extends React.Component<TosIconProps,TosIconState> {
 
     render() {
         return (
-
-
             <div>
                 {
                     this.props.ids.sort((a, b) => a - b).map((number) =>
+                        (
                         <TosIcon callback={null} forceNoShade={false} popup={false} id={number} ownedCards={this.props.ownedCards} condensed={false}/>
+                        )
                     )
                 }
             </div>
