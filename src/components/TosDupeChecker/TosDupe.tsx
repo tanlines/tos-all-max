@@ -1,13 +1,12 @@
 import React from 'react';
 import TosIcon from "../TosIcon/TosIcon";
-import {getEvolutionIds, getWikiImage} from '../utils/Utils';
+import {canBeSlimed, getEvolutionIds, getWikiImage} from '../utils/Utils';
 import styles from "../TosDupeChecker/TosDupe.module.css";
 
 
 type TosDupeProps = {
     ownedCards: Array<number>
 }
-
 class TosDupe extends React.Component<TosDupeProps> {
     seenSet:Array<number> = [];
 
@@ -54,6 +53,7 @@ class TosDupe extends React.Component<TosDupeProps> {
         });
         return commonElements.length > 0;
     }
+
     dupeCount() {
         if (this.props.ownedCards.length === 0) {
             return (
@@ -80,18 +80,25 @@ class TosDupe extends React.Component<TosDupeProps> {
                 if (n > 0) this.seenSet.push(eid);
                 count = count + n;
             });
+
+            let isVR = this.isVR(id);
+            let isDW = this.isDW(id);
+            let canBeSlimedd = canBeSlimed(id);
+
             if (count > 1) {
                 rows.push(
                     {
                         "row":
                             (
                             <div className={styles.container3}>
-                            <a className={styles.container1}>
-                                <img className={this.isVR(id) ? styles.image1 : styles.none} src="https://static.wikia.nocookie.net/towerofsaviors/images/5/50/EvoPlus.png"/>
+                                <a className={(isVR||isDW||canBeSlimedd) ? styles.foo : styles.none}>
+                                    <img className={isVR ? styles.image2 : styles.none} src="https://static.wikia.nocookie.net/towerofsaviors/images/5/50/EvoPlus.png"/>
+                                    <img className={isDW ? styles.image2 : styles.none} src="https://static.wikia.nocookie.net/towerofsaviors/images/3/37/DC2006.png"/>
+                                    <img className={canBeSlimedd ? styles.image2 : styles.none} src="https://static.wikia.nocookie.net/towerofsaviors/images/8/83/2400i.png"/>
+                                </a>
                                 <TosIcon id={id} ownedCards={this.props.ownedCards} popup={true} forceNoShade={true}
                                          callback={null} condensed={false}/>
-                                <img className={this.isDW(id) ? styles.image2 : styles.none} src="https://static.wikia.nocookie.net/towerofsaviors/images/3/37/DC2006.png"/>
-                            </a>
+
                             </div>
                             )
                             ,
@@ -117,7 +124,7 @@ class TosDupe extends React.Component<TosDupeProps> {
                     "count": rowssKey,
                     "row":
                         <>
-                            <div>{rowssKey} dupes</div>
+                            <div>{rowssKey} dupes (+{(rowss[rowssKey].length*(parseInt(rowssKey)-1))} slots)</div>
                             {rowss[rowssKey]}
                             <hr/>
                         </>
@@ -143,6 +150,16 @@ class TosDupe extends React.Component<TosDupeProps> {
     render() {
         return (
             <>
+                <div>
+                    VR
+                    <img style={{width: '20px'}} src="https://static.wikia.nocookie.net/towerofsaviors/images/5/50/EvoPlus.png"/>
+                    &nbsp;
+                    DW
+                    <img style={{width: '20px'}} src="https://static.wikia.nocookie.net/towerofsaviors/images/3/37/DC2006.png"/>
+                    &nbsp;
+                    Slime
+                    <img style={{width: '20px'}} src="https://static.wikia.nocookie.net/towerofsaviors/images/8/83/2400i.png"/>
+                </div>
                 <div className={styles.TosDupee}>
                 {
                     this.dupeCount()

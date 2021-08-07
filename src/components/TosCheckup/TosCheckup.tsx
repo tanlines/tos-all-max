@@ -155,6 +155,7 @@ class TosCheckup extends React.Component<CheckupProps,CheckupState> {
                         />
                         All max chooser
                     </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>
                         <input
                             type="radio"

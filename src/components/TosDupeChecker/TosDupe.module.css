@@ -47,25 +47,25 @@
 
 .container3 {
     white-space:nowrap;
-    display: inline;
+    vertical-align: bottom;
+    display: inline-grid;
 }
 .none {
     display: none;
 }
-.image1 {
-    z-index: 1;
-    position: relative;
-    top: -47px;
-    left: 13px;
-    height: 25px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    background-color: #141314;
-}
 .image2 {
+    vertical-align: top;
     position: relative;
-    top: -47px;
-    left: -15px;
-    width: 25px;
+    top: 3px;
+    left: 1px;
+    width: 17px;
+    height: 17px;
     background-color: white;
+    display: inline-block;
+}
+.foo {
+    vertical-align: top;
+    display: inline-flex;
+    width: 20px;
+    align-items: center;
 }
