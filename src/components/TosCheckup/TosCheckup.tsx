@@ -107,7 +107,7 @@ class TosCheckup extends React.Component<CheckupProps,CheckupState> {
 
                 <div>
                     <TosIcon callback={null} forceNoShade={false}
-                             ownedCards={[]} popup={false} id={6499} condensed={false}/>
+                             ownedCards={[]} popup={false} id={10117} condensed={false}/>
                     <TosIcon callback={null} forceNoShade={false}
                              ownedCards={[]} popup={false} id={2661} condensed={false}/>
                     <TosIcon callback={null} forceNoShade={false}

@@ -151,13 +151,14 @@ class TosDupe extends React.Component<TosDupeProps> {
         return (
             <>
                 <div>
-                    VR
+                    Dupe can be used for VR
                     <img style={{width: '20px'}} src="https://static.wikia.nocookie.net/towerofsaviors/images/5/50/EvoPlus.png"/>
                     &nbsp;
                     DW
                     <img style={{width: '20px'}} src="https://static.wikia.nocookie.net/towerofsaviors/images/3/37/DC2006.png"/>
-                    &nbsp;
-                    Slime
+                </div>
+                <div>
+                    Card can be Slimed for skill level
                     <img style={{width: '20px'}} src="https://static.wikia.nocookie.net/towerofsaviors/images/8/83/2400i.png"/>
                 </div>
                 <div className={styles.TosDupee}>
